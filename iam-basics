@@ -1,0 +1,196 @@
+# IAM Basics  
+A clear, beginner-friendly breakdown of Identity & Access Management (IAM) concepts across Azure, AWS, and SAP.  
+This repo is my personal study log, reference guide, and demonstration of how I understand identity, least privilege, and access governance in cloud environments.
+
+---
+
+## What This Repo Covers  
+
+- Core IAM concepts  
+- Azure Entra ID (Azure AD) identity basics  
+- AWS IAM fundamentals  
+- SAP security → cloud IAM mapping (SU01, PFCG, roles)  
+- Joiner–Mover–Leaver lifecycle  
+- Access troubleshooting checklist  
+- Least privilege and role design principles  
+
+This repo is NOT meant to be highly technical or coded – it’s meant to show **practical IAM understanding** that applies directly to real jobs.
+
+---
+
+## 1. IAM Core Concepts (Universal)  
+
+###  Identity  
+Who you are:  
+- User  
+- Service principal  
+- Managed identity  
+- Application account  
+
+###  Authentication  
+Proving it's really you (password, MFA, biometrics, certificates).
+
+###  Authorization  
+What you are allowed to do after you log in.
+
+###  Least Privilege  
+Give the minimum permissions required — nothing extra.
+
+###  RBAC (Role Based Access Control)  
+Assign *roles* to *groups* → assign *groups* to *users.*  
+You don’t assign individual permissions directly.
+
+###  Governance  
+Reviews, cleanup, compliance checks, monitoring.
+
+---
+
+##  2. Azure IAM (Entra ID)  
+
+###  Key Objects  
+- **Users** – people or service accounts  
+- **Groups** – role grouping (Security groups, M365 groups)  
+- **Roles** – permissions bundles  
+- **Apps / Enterprise Apps** – SSO and application identity  
+- **Conditional Access** – rules (location, device, MFA)  
+- **MFA** – multi-factor authentication  
+
+###  Azure RBAC vs Entra RBAC  
+**Entra ID RBAC:** identity-plane access  
+(e.g., “User Administrator”)  
+
+**Azure RBAC:** resource-plane access  
+(e.g., “Storage Blob Data Contributor”)  
+
+###  Access Flow in Azure  
+User → Group → Role Assignment → Effective Permissions
+
+---
+
+##  3. AWS IAM  
+
+###  Key Concepts  
+- **Users**  
+- **Groups**  
+- **Roles**  
+- **Policies** (JSON documents with permissions)  
+
+###  AWS Permission Structure  
+- Identity-based policies  
+- Resource-based policies  
+- Session policies  
+- Permission boundaries  
+
+###  Common AWS IAM Mistakes  
+- Overuse of `AdministratorAccess`  
+- Widcards (`s3:*`)  
+- Inline policies everywhere  
+- IAM users with long-term keys  
+
+---
+
+##  4. SAP Security → Cloud IAM Mapping  
+
+I previously worked with SAP ECC SU01, PFCG, composite/derived roles, and auth objects.  
+These concepts translate directly into cloud IAM.
+
+| SAP Concept | Cloud Equivalent |
+|------------|------------------|
+| SU01 User | Azure AD User / AWS IAM User |
+| PFCG Role | Azure Role / AWS IAM Role |
+| Auth Objects | IAM permissions / policy actions |
+| Profiles | Permission bundles |
+| Composite Roles | Group of roles / nested groups |
+| Derived Roles | Role inheritance |
+| USOBX / USOBT | Access rule definitions |
+| SoD (Segregation of Duties) | Zero-trust + role conflict rules |
+| User Master Data | User identity attributes / directory objects |
+
+**Identity mindset is the same across platforms.**
+
+---
+
+##  5. Joiner – Mover – Leaver Lifecycle  
+
+### Joiner  
+- Create user  
+- Assign base access  
+- Enforce MFA  
+- Add to job role groups  
+- SSO setup  
+
+### Mover  
+- Modify access  
+- Remove unnecessary permissions  
+- Validate SoD rules  
+- Update group membership  
+
+### ✔ Leaver  
+- Disable account  
+- Remove access  
+- Revoke sessions  
+- Archive logs  
+- Offboard completely  
+
+Companies care **a LOT** about this lifecycle.
+
+---
+##  6. IAM Troubleshooting Checklist  
+
+### If a user can't log in:
+- Check MFA  
+- Check Conditional Access rules  
+- Check device compliance  
+- Check if account is locked/disabled  
+- Check SSO federation status  
+
+### If a user lacks access:
+- Check group membership  
+- Check role assignment  
+- Check resource inheritance  
+- Check deny policies  
+- Check access reviews / expired assignments  
+
+### If permissions still don’t work:
+- Check effective permission layers  
+- Check policy evaluation logs  
+- Check nested group behavior  
+
+---
+
+##  7. Least Privilege Principles  
+
+- No direct role-to-user assignment  
+- Always use groups  
+- Break down access by job function  
+- Review access regularly  
+- Remove unused accounts  
+- No long-term keys  
+- Enforce MFA always  
+- Reduce wildcard permissions  
+
+IAM = preventing excessive access.
+
+---
+
+##  Why This Repo Exists  
+
+I’m building a career in **IAM & Cloud Security**, and this repo documents the concepts I use, study, and practice.  
+My background includes:
+
+- SAP IAM (SU01, PFCG, roles)  
+- Azure (AZ-104)  
+- AWS (CP + SAA)  
+- SOC / Tenable vulnerability internship  
+- Cloud support & identity troubleshooting  
+
+This repo shows how I think about identity and access across different systems.
+
+---
+
+##  Contact  
+If you'd like to connect or collaborate:
+
+**LinkedIn:** (your link here)  
+**GitHub:** (your profile link here)
+
